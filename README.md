@@ -42,3 +42,48 @@ egy kör:
         - ellenfél jön
 
 A játék addig folytatódik, amíg valamelyik játékosnak már csak üres edénye van
+
+React haditerv: 
+
+    - Logika: 
+        - új játék gomb megnyomása után beállításra kerül a játékasztal az alapbeállítás szerint
+        - az első játékos következik, a térfelét kiemeljük
+        - A játékos kiválaszt egy tálat
+        - A tál tartalmát kiürítjük 
+        - a tál tartalma a kézbe kerül
+        - a kéz a következő tálra lép: 
+            - megvizsgálja, hogy van-e még bab a kézben
+                - ha nincs, akkor lépés végi vizsgálat
+            - ha van még bab a kézben, megnézi az aktuális tálat
+                - ha sima tál, akkor egyet beletesz a kézben lévő babokból, kézben lévőből levon egyet
+                - ha eredménytál, megnézi, hogy az akutálisan lépésben lévő játékosé-e
+                    - ha igen, akkor beletesz egy babot
+                    - ha nem, akkor átugorja
+        - ha elfogyott a kézből a bab: 
+            - ha az utolsó pozíciója a kéznek eredménytál, akkor az aktuális játékos még egyszer jön
+            - ha a kéz utolsó pozíciójánál üres tál van: 
+                - megkeressük az ellenfél táljai között a szembenlévőt 
+                - kivesszük belőle az össze babot
+                - az aktuális játékos eredménytáljába tesszük
+                - másik játékos következik
+            - olyan tálba tesszük, ami nem eredménytál és nem üres: 
+                - következő játékos jön 
+        - Ha a játékos nem kapott plusz kört és vége a körének: 
+            - összeszámolni a tálakban lévő babokat
+            - ha 0, vége a játéknak
+            - eredménytálak összehasonlítása, győztes kiválasztása 
+        - Ha folytatódik a játék, akkor a másik játékos jön, és az ő tálai lesznek aktívak
+        - megjelenik az új játék gomb, 
+
+    - Szedő-rakó logika: 
+        - 
+    - Tálak komponensek 
+        - Van saját state változójuk, amiben el van tárolva, hogy babjuk van
+    - Board
+    - Aktív játékos figyelése
+    - Pontok számlálása
+    - Babok elfogyásának figyelése 
+
+    Játék menete: 
+
+    - 
