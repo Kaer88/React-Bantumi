@@ -7,8 +7,8 @@ Rekurzív funkcióval teszegetni le a babokat
 	kilépési kritérium: a beadott paraméter 0
 
 Linked lista adatstruktúra játékpályának? 
-	tömbbel egyszerűbb...
-	linkelt listát igazából fel kell használni,	
+	tömbbel egyszerűbb, reacttal se lesz gond elvileg
+	linkelt lista bonyolultabb, külön metódusokat kellene hozzá írni
 
 React vagy vanilla js?  
 
