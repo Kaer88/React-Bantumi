@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-export default function Pot({ beans }) {
+export default function BigPot({ beans }) {
     const [nrOfBeans, setNrOfBeans] = useState(beans)
 
     return (
-        <div className="pot">
+        <div className='big-pot'>
             <p>{nrOfBeans}</p>
         </div>
     )
