@@ -41,7 +41,7 @@ export default function GameBoard() {
                             gameBoard.map((pot, idx) =>
                             idx < 7 &&
                             (
-                                !Object.keys(pot).includes("owner") ? <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={gameBoard[idx].pot} />
+                                !Object.keys(pot).includes("owner") ? <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={gameBoard[idx].pot} className="big-pot-1 big-pot"/>
                             )
 
                             )
@@ -54,7 +54,7 @@ export default function GameBoard() {
                                 idx >= 7 &&
 
                                 (
-                                    !Object.keys(pot).includes("owner") ? <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={gameBoard[idx].pot} />
+                                    !Object.keys(pot).includes("owner") ? <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={gameBoard[idx].pot} className="big-pot-2 big-pot" />
                                 )
 
 
