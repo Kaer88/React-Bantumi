@@ -3,6 +3,7 @@ import Pot from './Pot'
 
 import { GameContext } from '../contexts/gameContext'
 import Game from '../services/gameLogic'
+import Hand from './Hand'
 
 const game = new Game()
 
@@ -10,12 +11,17 @@ export default function GameBoard() {
 
     const { gameContext, setGameContext } = useContext(GameContext)
     const [gameBoard, setGameBoard] = useState([])
-
+    const [currentPlayer, setCurrentPlayer] = useState(0)
 
 
     const handleInitBtn = () => {
+      
         const newGame = game.init()
         setGameBoard(newGame)
+        setGameContext({
+            ...gameContext,
+            currentPlayer: 1
+        })
     }
 
 
@@ -23,14 +29,15 @@ export default function GameBoard() {
         game.pickAPot(idx)
         const newGameState = game.getBoardState()
         setGameBoard(newGameState)
-
+        setGameContext(gameContext.currentPlayer === 1 ? 2 : 1)
 
     }
 
 
     return (
         <>
-            <button onClick={handleInitBtn}>Innit</button>
+            <button onClick={handleInitBtn}>Innit</button>  
+            <Hand />
             {
                 gameBoard.length != 0 &&
 
