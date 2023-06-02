@@ -4,7 +4,6 @@ import GameBoard from './components/GameBoard'
 import { GameContext, GameContextProvider } from './contexts/gameContext'
 
 function App() {
-  const { gameContext, setGameContext } = useContext(GameContext)
 
 
   return (

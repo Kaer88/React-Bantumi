@@ -19,10 +19,23 @@
 #player1-area {
     display: flex;
     font-weight: 600;
+    position: relative;
 }
 
 #player2-area {
     display: flex;
     flex-direction: row-reverse;
+    position: relative;
+
+
+}
+
+.big-pot {
+    position: absolute;
+    transform: scale(1.3) translate(30px);
+
+    
+
+
 
 }

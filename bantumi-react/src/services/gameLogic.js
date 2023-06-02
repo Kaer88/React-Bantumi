@@ -8,7 +8,7 @@ export default class Game {
             { pot: 0 },
             { pot: 0 },
             {
-                bigPot: 0,
+                pot: 0,
                 owner: 1
             },
             { pot: 0 },
@@ -18,7 +18,7 @@ export default class Game {
             { pot: 0 },
             { pot: 0 },
             {
-                bigPot: 0,
+                pot: 0,
                 owner: 2
             },
 
@@ -34,7 +34,7 @@ export default class Game {
                 this.board[i].pot = 4
 
             } else {
-                this.board[i].bigPot = 0;
+                this.board[i].pot = 0;
             }
         }
         
@@ -57,9 +57,8 @@ export default class Game {
                 nextPotIdx++
                 numberOfSteps-- 
             } else {
-                this.board[nextPotIdx].bigPot++
+                this.board[nextPotIdx].pot++
                 nextPotIdx++
-                
                 numberOfSteps-- 
             }
 

@@ -87,3 +87,24 @@ React haditerv:
     Játék menete: 
 
     - 
+
+
+
+              {/* <div id="player1">
+                        <Pot beans={gameBoard.board[0].pot} />
+                        <Pot beans={game.board[1].pot} />
+                        <Pot beans={game.board[2].pot} />
+                        <Pot beans={game.board[3].pot} />
+                        <Pot beans={game.board[4].pot} />
+                        <Pot beans={game.board[5].pot} />
+                        <BigPot beans={game.board[6].bigPot} />
+                    </div>
+                    <div id="player2">
+                        <Pot beans={game.board[7].pot} />
+                        <Pot beans={game.board[8].pot} />
+                        <Pot beans={game.board[9].pot} />
+                        <Pot beans={game.board[10].pot} />
+                        <Pot beans={game.board[11].pot} />
+                        <Pot beans={game.board[12].pot} />
+                        <BigPot beans={game.board[13].bigPot} />
+                    </div> */}

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Pot from './Pot'
-import BigPot from './BigPot'
+
 import { GameContext } from '../contexts/gameContext'
 import Game from '../services/gameLogic'
 
@@ -15,8 +15,6 @@ export default function GameBoard() {
 
     const handleInitBtn = () => {
         const newGame = game.init()
-
-
         setGameBoard(newGame)
     }
 
@@ -24,8 +22,6 @@ export default function GameBoard() {
     const handleChoice = (idx) => {
         game.pickAPot(idx)
         const newGameState = game.getBoardState()
-
-        console.log(newGameState)
         setGameBoard(newGameState)
 
 
@@ -45,7 +41,7 @@ export default function GameBoard() {
                             gameBoard.map((pot, idx) =>
                             idx < 7 &&
                             (
-                                !Object.keys(pot).includes("owner") ? <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <BigPot key={`2-${idx}`} beans={gameBoard[idx].bigPot} />
+                                !Object.keys(pot).includes("owner") ? <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={gameBoard[idx].pot} />
                             )
 
                             )
@@ -58,7 +54,7 @@ export default function GameBoard() {
                                 idx >= 7 &&
 
                                 (
-                                    !Object.keys(pot).includes("owner") ? <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <BigPot key={`2-${idx}`} beans={gameBoard[idx].bigPot} />
+                                    !Object.keys(pot).includes("owner") ? <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={gameBoard[idx].pot} />
                                 )
 
 
