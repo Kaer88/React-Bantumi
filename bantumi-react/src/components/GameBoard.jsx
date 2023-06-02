@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Pot from './Pot'
 import BigPot from './BigPot'
 import { GameContext } from '../contexts/gameContext'
@@ -11,14 +11,22 @@ export default function GameBoard() {
     const { gameContext, setGameContext } = useContext(GameContext)
     const [gameBoard, setGameBoard] = useState([])
 
-    const handleInitBtn = () => {
 
-        setGameBoard(game.init())
+
+    const handleInitBtn = () => {
+        const newGame = game.init()
+
+
+        setGameBoard(newGame)
     }
-    console.log("gameboard: ", gameBoard)
+
 
     const handleChoice = (idx) => {
+        game.pickAPot(idx)
+        const newGameState = game.getBoardState()
 
+        console.log(newGameState)
+        setGameBoard(newGameState)
 
 
     }
@@ -33,31 +41,31 @@ export default function GameBoard() {
                 <div id="gameboard">
                     <div id="player1-area">
                         {
-                            gameBoard.map((pot, idx) => {
-                                if (idx < 7) {
-                                    return (
-                                        !Object.keys(pot).includes("owner") ? <Pot beans={pot.pot} onClick={() => handleChoice(idx)} /> : <BigPot beans={pot.bigPot} />
-                                    )
-                                }
+                          
+                            gameBoard.map((pot, idx) =>
+                            idx < 7 &&
+                            (
+                                !Object.keys(pot).includes("owner") ? <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <BigPot key={`2-${idx}`} beans={gameBoard[idx].bigPot} />
+                            )
 
-                            })
+                            )
                         }
 
                     </div>
                     <div id="player2-area">
                         {
-                            gameBoard.map((pot, idx) => {
-                                if (idx >= 7) {
-                                    return (
-                                        !Object.keys(pot).includes("owner") ? <Pot beans={pot.pot} onClick={() => handleChoice(idx)} /> : <BigPot beans={pot.bigPot} />
-                                    )
-                                }
+                            gameBoard.map((pot, idx) =>
+                                idx >= 7 &&
 
-                            })
+                                (
+                                    !Object.keys(pot).includes("owner") ? <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <BigPot key={`2-${idx}`} beans={gameBoard[idx].bigPot} />
+                                )
+
+
+                            )
                         }
 
                     </div>
-
 
                 </div>
             }
