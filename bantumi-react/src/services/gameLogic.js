@@ -49,8 +49,13 @@ export default class Game {
         let nextPotIdx = idx + 1
         let numberOfSteps = this.board[idx].pot;
         this.board[idx].pot = 0;
-
+        let timeout = 0; 
         while (numberOfSteps != 0) {
+
+            setTimeout(() => {
+
+                
+            }, timeout)
             if (nextPotIdx === 14) nextPotIdx = 0;
             if (!Object.keys(this.board[nextPotIdx]).includes("owner")) {
                 this.board[nextPotIdx].pot++
