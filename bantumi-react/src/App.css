@@ -1,0 +1,28 @@
+.pot, .big-pot {
+    border: 1px solid black;
+    padding: 5px;
+    width: 40px;
+    text-align: center;
+}
+
+#gameboard {
+   width:400px;
+   display: flex;
+   flex-direction: column-reverse;
+   border: 1px solid black;
+   flex-wrap: wrap;
+   align-items: center;
+  
+    
+}
+
+#player1-area {
+    display: flex;
+    font-weight: 600;
+}
+
+#player2-area {
+    display: flex;
+    flex-direction: row-reverse;
+
+}
