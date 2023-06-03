@@ -24,6 +24,13 @@ export default class Game {
 
 
         ]
+
+        this.gameVars = {
+            handPosition: 0,
+            currentPlayer: 0,
+            player1SumOfBeans: 0,
+            player2SumOfBeans: 0,
+        }
     }
 
     init() {
@@ -37,42 +44,42 @@ export default class Game {
                 this.board[i].pot = 0;
             }
         }
-        
+
         return (this.board)
     }
 
 
     pickAPot(idx) {
-        
-        if(this.board[idx].pot === 0) return;
+
+        if (this.board[idx].pot === 0) return;
 
         let nextPotIdx = idx + 1
         let numberOfSteps = this.board[idx].pot;
         this.board[idx].pot = 0;
-        let timeout = 0; 
+        let timeout = 0;
         while (numberOfSteps != 0) {
 
-            setTimeout(() => {
-
-                
-            }, timeout)
             if (nextPotIdx === 14) nextPotIdx = 0;
             if (!Object.keys(this.board[nextPotIdx]).includes("owner")) {
                 this.board[nextPotIdx].pot++
                 nextPotIdx++
-                numberOfSteps-- 
+                numberOfSteps--
             } else {
                 this.board[nextPotIdx].pot++
                 nextPotIdx++
-                numberOfSteps-- 
+                numberOfSteps--
             }
 
         }
-       
+
     }
 
     getBoardState() {
         return Array.from(this.board)
+    }
+
+    getGameVars() {
+        return this.gameVars
     }
 
 
