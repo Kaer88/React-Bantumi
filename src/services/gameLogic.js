@@ -210,7 +210,6 @@ export default class Game {
 
             const indexOfLastPot = nextPotIdx - 1
 
-            console.log(this.board[indexOfLastPot])
 
             if (Object.keys(this.board[indexOfLastPot]).includes("scorePot") && this.board[indexOfLastPot].owner === player) {
                 return

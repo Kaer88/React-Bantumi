@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react"
-import { GameContext } from "../contexts/gameContext"
 
 export default function Textbox() {
-    const { gameContext } = useContext(GameContext)
+   
     const [toggleState, setToggleState] = useState(false)
 
 
