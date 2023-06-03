@@ -167,6 +167,10 @@ export default class Game {
         return this.gameVars
     }
 
+    getWinner() {
+        return this.gameVars.player1SumOfBeans > this.gameVars.player2SumOfBeans? 0 : 1
+    }
+
 
     pickAPot(idx, player) {
 
@@ -234,14 +238,10 @@ export default class Game {
 
         const player1Pots = this.board.slice(0, 6)
         const player2Pots = this.board.slice(7, 13)
-        console.log(player1Pots)
-        console.log(player2Pots)
+    
         const player1BeansRemaining = player1Pots.reduce((acc, curr) => acc += curr.pot, 0)
         const player2BeansRemaining = player2Pots.reduce((acc, curr) => acc += curr.pot, 0)
 
-        console.log(player1BeansRemaining)
-
-        console.log(player2BeansRemaining)
 
         if (player1BeansRemaining === 0 || player2BeansRemaining === 0) {
 

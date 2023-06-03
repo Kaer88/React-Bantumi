@@ -34,12 +34,10 @@ export default function GameBoard() {
     console.log(gameContext)
 
     return (
-        <>
+        <div>
             <button onClick={handleInitBtn}>Innit</button>
-            <div id="textbox">
-                <p>Jelenlegi játékos: {gameContext.currentPlayer === 0 ? "Első játékos" : "Második Játékos"}</p>
-            </div>
-            <Hand />
+            
+         
             {
 
                 gameBoard.length != 0 &&
@@ -87,7 +85,7 @@ export default function GameBoard() {
                     </div>
                 </>
             }
-        </>
+        </div>
     )
 
 }
