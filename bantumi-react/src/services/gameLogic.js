@@ -199,7 +199,7 @@ export default class Game {
 
             }
 
-            this.gameVars
+
             // lépés utáni vizsgálatok, következő játékos megállapítása
 
             const indexOfLastPot = nextPotIdx - 1
@@ -225,48 +225,48 @@ export default class Game {
 
             }
 
-            // lépés utáni vizsgálatok - van-e olyan oldal, ahol 0? 
-            let gameEnder = false;
-
-            const player1Pots = this.board.slice(0, 6)
-            const player2Pots = this.board.slice(7, 13)
-            console.log(player1Pots)
-            console.log(player2Pots)
-            const player1BeansRemaining = player1Pots.reduce((acc, curr) => acc += curr.pot, 0)
-            const player2BeansRemaining = player2Pots.reduce((acc, curr) => acc += curr.pot, 0)
-
-            console.log(player1BeansRemaining)
-
-            console.log(player2BeansRemaining)
-
-            if (player1BeansRemaining === 0 || player2BeansRemaining === 0) {
-
-
-                gameEnder = true;
-
-
-                for (let i = 0; i < player1Pots.length; i++) {
-                    player1Pots[i].pot = 0
-                }
-                this.board[6].pot += player1BeansRemaining
-
-
-
-                for (let i = 0; i < player2Pots.length; i++) {
-                    player2Pots[i].pot = 0
-                }
-                this.board[13].pot += player2BeansRemaining
-
-            }
-
-            this.gameVars.player1SumOfBeans = this.board[6].pot
-            this.gameVars.player2SumOfBeans = this.board[13].pot
-
-            this.gameVars.gameEnd = gameEnder;
-
 
         }
 
+
+        // lépés utáni vizsgálatok - van-e olyan oldal, ahol 0? 
+        let gameEnder = false;
+
+        const player1Pots = this.board.slice(0, 6)
+        const player2Pots = this.board.slice(7, 13)
+        console.log(player1Pots)
+        console.log(player2Pots)
+        const player1BeansRemaining = player1Pots.reduce((acc, curr) => acc += curr.pot, 0)
+        const player2BeansRemaining = player2Pots.reduce((acc, curr) => acc += curr.pot, 0)
+
+        console.log(player1BeansRemaining)
+
+        console.log(player2BeansRemaining)
+
+        if (player1BeansRemaining === 0 || player2BeansRemaining === 0) {
+
+
+            gameEnder = true;
+
+
+            for (let i = 0; i < player1Pots.length; i++) {
+                player1Pots[i].pot = 0
+            }
+            this.board[6].pot += player1BeansRemaining
+
+
+
+            for (let i = 0; i < player2Pots.length; i++) {
+                player2Pots[i].pot = 0
+            }
+            this.board[13].pot += player2BeansRemaining
+
+        }
+
+        this.gameVars.player1SumOfBeans = this.board[6].pot
+        this.gameVars.player2SumOfBeans = this.board[13].pot
+
+        this.gameVars.gameEnd = gameEnder;
 
     }
 
