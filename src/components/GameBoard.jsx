@@ -3,8 +3,6 @@ import Pot from './Pot'
 
 import { GameContext } from '../contexts/gameContext'
 import Game from '../services/gameLogic'
-import Hand from './Hand'
-import TurnIndicator from './TurnIndicator'
 
 const game = new Game()
 
@@ -12,9 +10,7 @@ export default function GameBoard() {
 
     const { gameContext, setGameContext } = useContext(GameContext)
     const [gameBoard, setGameBoard] = useState([])
-    const [currentPlayer, setCurrentPlayer] = useState(0)
-
-
+ 
     const handleInitBtn = () => {
 
         const newGame = game.init()
