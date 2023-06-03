@@ -18,15 +18,17 @@ export default function GameBoard() {
       
         const newGame = game.init()
         setGameBoard(newGame)
-        setGameContext(game.gameVars)
+        setGameContext(game.getGameVars())
     }
 
     console.log(gameContext)
+    console.log(gameBoard)
     const handleChoice = (idx) => {
-        game.pickAPot(idx)
-        const newGameState = game.getBoardState()
-        setGameBoard(newGameState)
-        setGameContext(gameContext.currentPlayer === 1 ? 2 : 1)
+        game.pickAPot(idx, gameContext.currentPlayer)
+        const newBoardState = game.getBoardState()
+        const newGameVars = game.getGameVars()
+        setGameBoard(newBoardState)
+        setGameContext(newGameVars)
 
     }
 
@@ -45,7 +47,7 @@ export default function GameBoard() {
                             gameBoard.map((pot, idx) =>
                             idx < 7 &&
                             (
-                                !Object.keys(pot).includes("owner") ? <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={gameBoard[idx].pot} className="big-pot-1 big-pot"/>
+                                !Object.keys(pot).includes("scorePot") ? <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={gameBoard[idx].pot} className="big-pot-1 big-pot"/>
                             )
 
                             )
@@ -58,7 +60,7 @@ export default function GameBoard() {
                                 idx >= 7 &&
 
                                 (
-                                    !Object.keys(pot).includes("owner") ? <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={gameBoard[idx].pot} className="big-pot-2 big-pot" />
+                                    !Object.keys(pot).includes("scorePot") ? <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={gameBoard[idx].pot} className="big-pot-2 big-pot" />
                                 )
 
 
