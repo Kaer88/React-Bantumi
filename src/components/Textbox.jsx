@@ -33,7 +33,7 @@ export default function Textbox() {
                         <ul>
 
                             <li>
-                                A játékosok felváltva választanak az előttük lévő 6 tálból, melyekben 4-4 bab van. 
+                                A játékosok a térfelükön lévő 6 tál közül választanak egyet, mindegyikben alapesetben 4 bab van. 
                             </li>
                             <li>
                                 A kiválasztott tálból a játékos kiveszi a babokat és egyesével leteszi a következő tálakba, körben az óramutató járásával ellentétesen haladva, míg a bab el nem fogy a kézből.
