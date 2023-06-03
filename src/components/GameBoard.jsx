@@ -39,6 +39,8 @@ export default function GameBoard() {
                     <div id="gameboard" style={{background: woodBG}}>
 
                         <div id="player1-area" className={`${gameContext.currentPlayer === 0 && "active2"}`} > 
+                        <span className='player1-tag'>1. Játékos</span>
+
                             {
 
                                 gameBoard.map((pot, idx) =>
@@ -56,7 +58,7 @@ export default function GameBoard() {
 
                         </div>
                         <div id="player2-area" className={`${gameContext.currentPlayer === 1 && "active2"}`}>
-
+                            <span className='player2-tag'>2. Játékos</span>
                             {
                                 gameBoard.map((pot, idx) =>
                                     idx >= 7 &&
@@ -86,6 +88,7 @@ export default function GameBoard() {
                   <p>Nyomd meg a Startot egy új játékhoz!</p>
                 </div>
             }
+
         </div>
     )
 

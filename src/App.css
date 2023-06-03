@@ -2,14 +2,57 @@ body {
     background-color: rgb(22,22,21);
 }
 
+.pot::after {
+    content: '';
+    background-color: rgb(109, 0, 0);
+    width:30px;
+    height: 40px;
+    display: block;
+    border:10px solid rgb(121, 28, 28, 0.788);
+    position: absolute;
+    top: 0px;
+    right:0px;
+    z-index: 4;
+    border-radius: 15px;
+}
+
+.big-pot::after {
+
+    content: '';
+    background-color: rgb(109, 0, 0);
+    width:30px;
+    height: 40px;
+    display: block;
+    border:10px solid rgb(121, 28, 28, 0.788);
+    position: absolute;
+    top: 0px;
+    right:0px;
+    z-index: 4;
+    border-radius: 15px;
+
+}
+
 .pot,
 .big-pot {
-    border: 1px solid white;
+    border: 1px solid orangered;
     padding: 5px;
     width: 40px;
     text-align: center;
     position: relative;
     border-radius: 15px;
+    z-index:5;
+    overflow: hidden;
+}
+
+.pot p {
+    position: relative;
+    z-index: 6;
+}
+
+.big-pot p {
+    position: relative;
+    z-index: 9;
+
 }
 
 #gameboard {
@@ -30,6 +73,7 @@ body {
 
 #player1-area {
     display: flex;
+    position: relative;
   
 
 }
@@ -37,6 +81,9 @@ body {
 #player2-area {
     display: flex;
     flex-direction: row-reverse;
+    position: relative;
+
+    
 
 
 
@@ -83,13 +130,29 @@ body {
 
 .active {
     
-    border: 1px solid orangered;
+    border: 1px solid white;
     
 }
 
 .active:hover {
     transform: scale(1.05);
 }
+
+.player1-tag {
+    position: absolute;
+    z-index: 6;
+    top: 60px;
+    right: -90px;
+
+}
+
+.player2-tag {
+    z-index: 6;
+    position: absolute;
+    bottom: 60px;
+    left: -90px
+}
+
 
 #textbox {
     color: white;
@@ -121,3 +184,4 @@ body {
     border:10px solid rgb(100, 79, 63);
     text-align: center;
 }
+
