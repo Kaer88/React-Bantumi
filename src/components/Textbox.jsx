@@ -6,11 +6,12 @@ export default function Textbox() {
 
 
     return (
-
-        <div id="textbox">
-            <button 
+        <>
+        <button 
                 id="toggle-rules-btn" 
                 onClick={() => setToggleState(!toggleState)}>Szabályok</button>
+        <div id="textbox">
+            
             {
                 toggleState &&
                 <>
@@ -55,5 +56,6 @@ export default function Textbox() {
             }
 
         </div>
+        </>
     )
 }

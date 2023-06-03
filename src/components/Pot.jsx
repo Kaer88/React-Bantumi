@@ -16,7 +16,7 @@ export default function Pot({ beans, onClick, className}) {
     }, [beans])
 
     return (
-        <div className={className? className : "pot"} onClick={onClick}>
+        <div className={className} onClick={onClick}>
             <p>{nrOfBeans}</p>
             {animationState && <Hand />}
         </div>

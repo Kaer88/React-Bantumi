@@ -95,13 +95,17 @@ body {
     color: white;
     position: absolute;
     background-color: rgb(22, 22, 50);
-    z-index: 10;
+    z-index: 10;   
     
-    padding: 1em;
+}
+
+#textbox > * {
+    padding:0.5em;
 }
 
 #textbox li {
     margin-top: 0.5em;
+    
 }
 
 #hand-element {
