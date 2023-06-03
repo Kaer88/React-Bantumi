@@ -65,7 +65,7 @@ body {
     gap:50px;
     background-image: url(./assets/stock-photo-rustic-wood-wall-texture-background.jpeg);
     border-radius: 15px;
-    
+    box-shadow: 2px 4px 56px 18px black;
 
 }
 
