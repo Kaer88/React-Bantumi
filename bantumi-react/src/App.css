@@ -57,3 +57,18 @@
     height: 30px;
     transform: rotate(180deg);
 }
+
+.turn-indicator {
+    height: 30px;
+    width: 30px;
+    background-color: green;
+    border-radius: 50%;
+    position: absolute;
+    transform: translateX(30px);
+    
+}
+
+.active {
+    background-color: rgb(200, 200, 200);
+    font-weight: 600;
+}

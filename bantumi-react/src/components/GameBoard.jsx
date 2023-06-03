@@ -4,6 +4,7 @@ import Pot from './Pot'
 import { GameContext } from '../contexts/gameContext'
 import Game from '../services/gameLogic'
 import Hand from './Hand'
+import TurnIndicator from './TurnIndicator'
 
 const game = new Game()
 
@@ -15,7 +16,7 @@ export default function GameBoard() {
 
 
     const handleInitBtn = () => {
-      
+
         const newGame = game.init()
         setGameBoard(newGame)
         setGameContext(game.getGameVars())
@@ -30,45 +31,61 @@ export default function GameBoard() {
         setGameContext(newGameVars)
 
     }
-
+    console.log(gameContext)
 
     return (
         <>
-            <button onClick={handleInitBtn}>Innit</button>  
+            <button onClick={handleInitBtn}>Innit</button>
+            <div id="textbox">
+                <p>Jelenlegi játékos: {gameContext.currentPlayer === 0 ? "Első játékos" : "Második Játékos"}</p>
+            </div>
             <Hand />
             {
+
                 gameBoard.length != 0 &&
+                <>
 
-                <div id="gameboard">
-                    <div id="player1-area">
-                        {
-                          
-                            gameBoard.map((pot, idx) =>
-                            idx < 7 &&
-                            (
-                                !Object.keys(pot).includes("scorePot") ? <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={pot.pot} className="big-pot-1 big-pot"/>
-                            )
+                    <div id="gameboard">
 
-                            )
-                        }
+                        <div id="player1-area">
+                            {
 
-                    </div>
-                    <div id="player2-area">
-                        {
-                            gameBoard.map((pot, idx) =>
-                                idx >= 7 &&
+                                gameBoard.map((pot, idx) =>
+                                    idx < 7 &&
+                                    (
+                                        !Object.keys(pot).includes("scorePot")
+                                            ?
+                                            <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} className={`pot ${gameContext.currentPlayer === 0 && "active"}`} />
+                                            :
+                                            <Pot key={`2-${idx}`} beans={pot.pot} className="big-pot-1 big-pot" />
+                                    )
 
-                                (
-                                    !Object.keys(pot).includes("scorePot") ? <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} /> : <Pot key={`2-${idx}`} beans={pot.pot} className="big-pot-2 big-pot" />
                                 )
+                            }
+
+                        </div>
+                        <div id="player2-area">
+
+                            {
+                                gameBoard.map((pot, idx) =>
+                                    idx >= 7 &&
+
+                                    (
+                                        !Object.keys(pot).includes("scorePot")
+                                            ?
+                                            <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} className={`pot ${gameContext.currentPlayer === 1 && "active"}`} />
+                                            :
+                                            <Pot key={`2-${idx}`} beans={pot.pot} className="big-pot-2 big-pot" />
+                                    )
 
 
-                            )
-                        }
+                                )
+                            }
+
+                        </div>
 
                     </div>
-
-                </div>
+                </>
             }
         </>
     )
