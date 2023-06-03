@@ -18,6 +18,9 @@ export default function GameBoard() {
         setGameContext(game.getGameVars())
     }
 
+    useEffect(() => {
+        setGameBoard(game.board)
+    }, [])
 
     const handleChoice = (idx) => {
         game.pickAPot(idx, gameContext.currentPlayer)
