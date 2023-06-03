@@ -21,10 +21,10 @@ export default function Textbox() {
                         <ul>
 
                             <li>
-                                A játékosok felváltva választanak az előttük lévő 6 tálból
+                                A játékosok felváltva választanak az előttük lévő 6 tálból, melyekben 4-4 bab van. 
                             </li>
                             <li>
-                                A kiválasztott tálból a játékos kiveszi, és egyesével leteszi a következő tálakba az óramutató járásával ellentétesen haladva, míg a bab el nem fogy a kézből
+                                A kiválasztott tálból a játékos kiveszi a babokat és egyesével leteszi a következő tálakba az óramutató járásával ellentétesen haladva, míg a bab el nem fogy a kézből
                             </li>
                             <li>
                                 A játékosok jobb oldalán helyezkedik el a gyűjtőedény. A babok letétele során a saját gyüjtőedénybe is teszünk egy babot, de az ellenfél gyűjtőedényét kihagyjuk!
