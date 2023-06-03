@@ -76,7 +76,7 @@ export default class Game {
         for (let i = 0; i < this.board.length; i++) {
             if (!Object.keys(this.board[i]).includes("scorePot")) {
 
-                this.board[i].pot = 4
+                this.board[i].pot = 9
 
             } else {
                 this.board[i].pot = 0;
@@ -106,9 +106,14 @@ export default class Game {
             while (numberOfSteps != 0) {
 
                 if (nextPotIdx === 14) nextPotIdx = 0;
-                if (!Object.keys(this.board[nextPotIdx]).includes("owner")) {
+                if (Object.keys(this.board[nextPotIdx]).includes("scorePot") && this.board[nextPotIdx].owner != player) {
+                    
+                    nextPotIdx += 1
+
+                    if (nextPotIdx >= 14) nextPotIdx = 0;
+              
                     this.board[nextPotIdx].pot++
-                    nextPotIdx++
+                    nextPotIdx += 1
                     numberOfSteps--
                 } else {
                     this.board[nextPotIdx].pot++
@@ -117,6 +122,8 @@ export default class Game {
                 }
 
             }
+
+            // lépés utáni vizsgálatok, következő játékos megállapítása 
             this.gameVars.currentPlayer = this.gameVars.currentPlayer === 0 ? 1 : 0;
 
         }

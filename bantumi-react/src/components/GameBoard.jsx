@@ -21,8 +21,7 @@ export default function GameBoard() {
         setGameContext(game.getGameVars())
     }
 
-    console.log(gameContext)
-    console.log(gameBoard)
+
     const handleChoice = (idx) => {
         game.pickAPot(idx, gameContext.currentPlayer)
         const newBoardState = game.getBoardState()
