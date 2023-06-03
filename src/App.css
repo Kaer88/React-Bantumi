@@ -1,23 +1,30 @@
+body {
+    background-color: rgb(22,22,21);
+}
+
 .pot,
 .big-pot {
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 5px;
     width: 40px;
     text-align: center;
     position: relative;
+    border-radius: 15px;
 }
 
 #gameboard {
     width: 400px;
     display: flex;
     flex-direction: column-reverse;
-    border: 1px solid black;
+    color:white;
     flex-wrap: wrap;
     align-items: center;
-    margin: auto;
+    margin: 50px auto;
     padding: 20px 80px;
     gap:50px;
-
+    background-image: url(./assets/stock-photo-rustic-wood-wall-texture-background.jpeg);
+    border-radius: 15px;
+    
 
 }
 
@@ -68,7 +75,45 @@
     
 }
 
+.start-btn {
+    width: 100px;
+    display: block;
+    margin: auto;    
+}
+
 .active {
-    background-color: rgb(200, 200, 200);
-    font-weight: 600;
+    
+    border: 1px solid orangered;
+    
+}
+
+.active:hover {
+    transform: scale(1.05);
+}
+
+#textbox {
+    color: white;
+    position: absolute;
+    background-color: rgb(22, 22, 50);
+    z-index: 10;
+    
+    padding: 1em;
+}
+
+#textbox li {
+    margin-top: 0.5em;
+}
+
+#hand-element {
+    color: white;
+    background-color: wheat;
+}
+
+#win-message {
+    padding: 1em;
+    width: 400px;
+    margin: auto;
+    background-color: rgb(120, 79, 63);
+    border:10px solid rgb(100, 79, 63);
+    text-align: center;
 }

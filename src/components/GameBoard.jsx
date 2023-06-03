@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Pot from './Pot'
-
+import woodBG from '../assets/stock-photo-rustic-wood-wall-texture-background.jpeg'
 import { GameContext } from '../contexts/gameContext'
 import Game from '../services/gameLogic'
 
@@ -27,21 +27,18 @@ export default function GameBoard() {
         setGameContext(newGameVars)
 
     }
-    console.log(gameContext)
 
     return (
         <div>
-            <button onClick={handleInitBtn}>Innit</button>
-            
-         
+            <button className='start-btn' onClick={handleInitBtn}>Start!</button>
             {
 
                 gameBoard.length != 0 &&
                 <>
 
-                    <div id="gameboard">
+                    <div id="gameboard" style={{background: woodBG}}>
 
-                        <div id="player1-area">
+                        <div id="player1-area" className={`${gameContext.currentPlayer === 0 && "active2"}`} > 
                             {
 
                                 gameBoard.map((pot, idx) =>
@@ -58,7 +55,7 @@ export default function GameBoard() {
                             }
 
                         </div>
-                        <div id="player2-area">
+                        <div id="player2-area" className={`${gameContext.currentPlayer === 1 && "active2"}`}>
 
                             {
                                 gameBoard.map((pot, idx) =>
@@ -80,6 +77,14 @@ export default function GameBoard() {
 
                     </div>
                 </>
+            }
+            
+            {
+            gameContext.gameEnd && 
+                <div id="win-message">
+                  {game.getWinner() === 0? <p>Az első játékos nyert!</p> : <p>A második játékos nyert!</p>}
+                  <p>Nyomd meg a Startot egy új játékhoz!</p>
+                </div>
             }
         </div>
     )

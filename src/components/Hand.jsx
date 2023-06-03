@@ -1,4 +1,4 @@
-import handPic from "../assets/hand.png"
+import handPic from "../assets/hand.svg"
 import React from "react"
 
 export default function Hand() {

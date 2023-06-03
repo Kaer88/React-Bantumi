@@ -52,9 +52,6 @@ export default function Textbox() {
                             </li>
                         </ul>
                     </div>
-                    <div>
-                        <p>Jelenlegi játékos: {gameContext.currentPlayer === 0 ? "Első játékos" : "Második Játékos"}</p>
-                    </div>
                 </>
             }
 
