@@ -73,6 +73,70 @@ export default class Game {
 
     init() {
 
+        // this.board = [
+        //     {
+        //         pot: 0,
+        //         owner: 0
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 0
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 0
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 0
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 0
+        //     },
+        //     {
+        //         pot: 9,
+        //         owner: 0
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 0,
+        //         scorePot: true
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 1
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 1
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 1
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 1
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 1
+        //     },
+        //     {
+        //         pot: 9,
+        //         owner: 1
+        //     },
+        //     {
+        //         pot: 0,
+        //         owner: 1,
+        //         scorePot: true
+        //     },
+
+
+        // ]
+
+
         for (let i = 0; i < this.board.length; i++) {
             if (!Object.keys(this.board[i]).includes("scorePot")) {
 
@@ -88,6 +152,7 @@ export default class Game {
             currentPlayer: 0,
             player1SumOfBeans: 0,
             player2SumOfBeans: 0,
+            gameEnd : false
         }
 
         return (this.board)
@@ -106,7 +171,7 @@ export default class Game {
     pickAPot(idx, player) {
         if (this.board[idx].pot === 0) return;
 
-
+        
         if (this.gameVars.currentPlayer === player && this.board[idx].owner === this.gameVars.currentPlayer) {
             let nextPotIdx = idx + 1
             let numberOfSteps = this.board[idx].pot;
@@ -143,13 +208,18 @@ export default class Game {
 
             } else if (
                 !Object.keys(this.board[indexOfLastPot]).includes("scorePot") && this.board[indexOfLastPot].pot === 1 && this.board[indexOfLastPot].owner === player
-                ){
-
-                console.log("kakukk!")
+            ) {
+                const currenPlayerPot = this.board[this.board.findIndex(pot => pot.scorePot && pot.owner === player)]
+         
+                currenPlayerPot.pot += this.board[this.board.length - 2 -indexOfLastPot].pot + this.board[indexOfLastPot].pot
+                this.board[this.board.length - 2 -indexOfLastPot].pot = 0 
+                this.board[indexOfLastPot].pot = 0;
+            
 
                 this.gameVars.currentPlayer = this.gameVars.currentPlayer === 0 ? 1 : 0;
 
             } else {
+              
                 this.gameVars.currentPlayer = this.gameVars.currentPlayer === 0 ? 1 : 0;
 
             }
