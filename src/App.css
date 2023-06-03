@@ -41,7 +41,6 @@ body {
     position: relative;
     border-radius: 15px;
     z-index:5;
-    overflow: hidden;
 }
 
 .pot p {
@@ -171,9 +170,10 @@ body {
     
 }
 
-#hand-element {
-    color: white;
-    background-color: wheat;
+.hand-element {
+    position: absolute;
+    right: 10px;
+
 }
 
 #win-message {
