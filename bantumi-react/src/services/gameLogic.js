@@ -94,6 +94,15 @@ export default class Game {
     }
 
 
+    getBoardState() {
+        return Array.from(this.board)
+    }
+
+    getGameVars() {
+        return this.gameVars
+    }
+
+
     pickAPot(idx, player) {
         if (this.board[idx].pot === 0) return;
 
@@ -124,13 +133,19 @@ export default class Game {
             }
 
             // lépés utáni vizsgálatok, következő játékos megállapítása
+
             const indexOfLastPot = nextPotIdx - 1
 
             console.log(this.board[indexOfLastPot])
+
             if (Object.keys(this.board[indexOfLastPot]).includes("scorePot") && this.board[indexOfLastPot].owner === player) {
                 return
-            } else if (!Object.keys(this.board[indexOfLastPot]).includes("scorePot") && this.board[indexOfLastPot].pot === 0) {
 
+            } else if (
+                !Object.keys(this.board[indexOfLastPot]).includes("scorePot") && this.board[indexOfLastPot].pot === 1 && this.board[indexOfLastPot].owner === player
+                ){
+
+                console.log("kakukk!")
 
                 this.gameVars.currentPlayer = this.gameVars.currentPlayer === 0 ? 1 : 0;
 
@@ -146,13 +161,7 @@ export default class Game {
 
     }
 
-    getBoardState() {
-        return Array.from(this.board)
-    }
 
-    getGameVars() {
-        return this.gameVars
-    }
 
 
 
