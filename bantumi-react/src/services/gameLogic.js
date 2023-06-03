@@ -76,7 +76,7 @@ export default class Game {
         for (let i = 0; i < this.board.length; i++) {
             if (!Object.keys(this.board[i]).includes("scorePot")) {
 
-                this.board[i].pot = 9
+                this.board[i].pot = 4
 
             } else {
                 this.board[i].pot = 0;
@@ -107,11 +107,11 @@ export default class Game {
 
                 if (nextPotIdx === 14) nextPotIdx = 0;
                 if (Object.keys(this.board[nextPotIdx]).includes("scorePot") && this.board[nextPotIdx].owner != player) {
-                    
+
                     nextPotIdx += 1
 
                     if (nextPotIdx >= 14) nextPotIdx = 0;
-              
+
                     this.board[nextPotIdx].pot++
                     nextPotIdx += 1
                     numberOfSteps--
@@ -123,8 +123,23 @@ export default class Game {
 
             }
 
-            // lépés utáni vizsgálatok, következő játékos megállapítása 
-            this.gameVars.currentPlayer = this.gameVars.currentPlayer === 0 ? 1 : 0;
+            // lépés utáni vizsgálatok, következő játékos megállapítása
+            const indexOfLastPot = nextPotIdx - 1
+
+            console.log(this.board[indexOfLastPot])
+            if (Object.keys(this.board[indexOfLastPot]).includes("scorePot") && this.board[indexOfLastPot].owner === player) {
+                return
+            } else if (!Object.keys(this.board[indexOfLastPot]).includes("scorePot") && this.board[indexOfLastPot].pot === 0) {
+
+
+                this.gameVars.currentPlayer = this.gameVars.currentPlayer === 0 ? 1 : 0;
+
+            } else {
+                this.gameVars.currentPlayer = this.gameVars.currentPlayer === 0 ? 1 : 0;
+
+            }
+
+
 
         }
 
