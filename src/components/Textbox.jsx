@@ -42,7 +42,7 @@ export default function Textbox() {
                                 A játékosok jobb oldalán helyezkedik el a nagyobb gyűjtőedény. A babok letétele során a saját gyüjtőedénybe is teszünk egy babot, de az ellenfél gyűjtőedényét kihagyjuk!
                             </li>
                             <li>
-                                Ha az utolsó letett bab saját oldali üres tálba kerül, akkor azt, illetve az ellenfél szemben lévő táljából az összes babot a saját eredménytálunkba tehetjük. Ez a Rablás!
+                                Ha az utolsó letett bab saját oldali üres tálba kerül, akkor azt, illetve az ellenfél szemben lévő táljából az összes babot a saját gyűjtőedényünkbe tehetjük. Ez a Rablás!
                             </li>
                             <li>
                                 Ha az utolsó letett bab a játékos saját gyűjtőedényébe kerül, még egyszer ugyanaz a játékos jön.
@@ -54,13 +54,13 @@ export default function Textbox() {
                         <h4>Játék vége:</h4>
                         <ul>
                             <li>
-                                Ha bármelyik oldalon lévő tálakból elfogy az összes bab, vége a játéknak.
+                                Ha bármelyik térfélen a tálakból elfogy az összes bab, vége a játéknak.
                             </li>
                             <li>
-                                A másik térfélen megmaradt babokat annak a játékosnak az eredménytálába tesszük, amelyik oldalon vannak a megmaradt babok.
+                                A másik játékos a táljaiból összegyűjti a maradék babokat és a gyüjtőedényébe teszi.
                             </li>
                             <li>
-                                Amelyik játékosnak a játék végén több bab van az eredménytáljában, az a győztes!
+                                Amelyik játékosnak a játék végén több bab van az gyüjtőedényében, az a győztes!
                             </li>
                         </ul>
                     </div>
