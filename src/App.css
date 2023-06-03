@@ -81,10 +81,6 @@ body {
     flex-direction: row-reverse;
     position: relative;
 
-    
-
-
-
 }
 
 .big-pot-1 {
@@ -97,10 +93,6 @@ body {
 .big-pot-2 {
     position: absolute;
     transform: scale(1.6) translateX(-210px) translateY(20px);
-
-
-
-
 }
 
 .hand-element {
@@ -110,15 +102,6 @@ body {
     transform: rotate(180deg);
 }
 
-.turn-indicator {
-    height: 30px;
-    width: 30px;
-    background-color: green;
-    border-radius: 50%;
-    position: absolute;
-    transform: translateX(30px);
-    
-}
 
 .start-btn {
     width: 100px;
@@ -132,7 +115,7 @@ body {
     
 }
 
-.active:hover {
+.active:not(.big-pot):hover {
     transform: scale(1.05);
 }
 

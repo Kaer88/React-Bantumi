@@ -50,7 +50,7 @@ export default function GameBoard() {
                                             ?
                                             <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} className={`pot ${gameContext.currentPlayer === 0 && "active"}`} />
                                             :
-                                            <Pot key={`2-${idx}`} beans={pot.pot} className="big-pot-1 big-pot" />
+                                            <Pot key={`2-${idx}`} beans={pot.pot} className={`big-pot-1 big-pot ${gameContext.currentPlayer === 0 && "active"}`} />
                                     )
 
                                 )
@@ -68,7 +68,7 @@ export default function GameBoard() {
                                             ?
                                             <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} className={`pot ${gameContext.currentPlayer === 1 && "active"}`} />
                                             :
-                                            <Pot key={`2-${idx}`} beans={pot.pot} className="big-pot-2 big-pot" />
+                                            <Pot key={`2-${idx}`} beans={pot.pot} className={`big-pot-2 big-pot ${gameContext.currentPlayer === 1 && "active"}`}  />
                                     )
 
 
