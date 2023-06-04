@@ -212,7 +212,7 @@ export default class Game {
 
 
             if (Object.keys(this.board[indexOfLastPot]).includes("scorePot") && this.board[indexOfLastPot].owner === player) {
-                return
+                // do nothing, újra az eredeti játékos jön
 
             } else if (
                 !Object.keys(this.board[indexOfLastPot]).includes("scorePot") && this.board[indexOfLastPot].pot === 1 && this.board[indexOfLastPot].owner === player
