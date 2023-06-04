@@ -169,6 +169,7 @@ export default class Game {
 
     getWinner() {
         if (this.gameVars.gameEnd) {
+            if(this.gameVars.player1SumOfBeans === this.gameVars.player2SumOfBeans) return -1
             return this.gameVars.player1SumOfBeans > this.gameVars.player2SumOfBeans ? 0 : 1
         }
     }
