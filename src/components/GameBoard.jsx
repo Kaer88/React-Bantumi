@@ -76,7 +76,7 @@ export default function GameBoard() {
                     <div id="gameboard">
 
                         <div id="player1-area" className={`${gameContext.currentPlayer === 0 && "active2"}`} >
-                            <span className='player1-tag'>Player</span>
+                            <span className='player1-tag'>Player 1</span>
 
                             {
 
