@@ -57,12 +57,12 @@ export default function GameBoard() {
     return (
         <div>
             <div id="game-controls">
-                <button className='start-btn' onClick={handleInitBtn}>Start!</button>
+                <button className='start-btn' onClick={handleInitBtn}>New Game</button>
                 {
                     gameContext.gameEnd &&
                     <>
-                        <button onClick={() => { setSinglePlayer(!singlePlayer) }} disabled={gameContext.gameEnd ? false : true}>Játékmód váltása</button>
-                        <p>{singlePlayer ? "1 játékos mód" : "2 játékos mód"}</p>
+                        <button onClick={() => { setSinglePlayer(!singlePlayer) }} disabled={gameContext.gameEnd ? false : true}>Game mode</button>
+                        <p>{`Mode: ${singlePlayer ? "Single player" : "Local multiplayer"}`}</p>
                     </>
                 }
 
@@ -76,7 +76,7 @@ export default function GameBoard() {
                     <div id="gameboard">
 
                         <div id="player1-area" className={`${gameContext.currentPlayer === 0 && "active2"}`} >
-                            <span className='player1-tag'>1. Játékos</span>
+                            <span className='player1-tag'>Player</span>
 
                             {
 
@@ -95,7 +95,7 @@ export default function GameBoard() {
 
                         </div>
                         <div id="player2-area" className={`${gameContext.currentPlayer === 1 && "active2"}`}>
-                            <span className='player2-tag'>2. Játékos {singlePlayer && '"AI"'}</span>
+                            <span className='player2-tag'>Player 2 {singlePlayer && '"AI"'}</span>
                             {
                                 gameBoard.map((pot, idx) =>
                                     idx >= 7 &&

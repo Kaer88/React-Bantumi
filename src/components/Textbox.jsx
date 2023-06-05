@@ -25,9 +25,6 @@ export default function Textbox() {
                             <li>
                                 2. Játékos: Felső térfél
                             </li>
-                            <li>
-                                Amely játékos térfele fehér, az a játékos következik!
-                            </li>
                         </ul>
                         <h4>Szabályok:</h4>
                         <ul>
