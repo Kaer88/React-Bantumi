@@ -169,7 +169,7 @@ export default class Game {
 
     getWinner() {
         if (this.gameVars.gameEnd) {
-            if(this.gameVars.player1SumOfBeans === this.gameVars.player2SumOfBeans) return -1
+            if (this.gameVars.player1SumOfBeans === this.gameVars.player2SumOfBeans) return -1
             return this.gameVars.player1SumOfBeans > this.gameVars.player2SumOfBeans ? 0 : 1
         }
     }
@@ -196,14 +196,13 @@ export default class Game {
                     if (nextPotIdx >= 14) nextPotIdx = 0;
 
                     this.board[nextPotIdx].pot++
-                    nextPotIdx += 1
-                    numberOfSteps--
+
                 } else {
                     this.board[nextPotIdx].pot++
-                    nextPotIdx++
-                    numberOfSteps--
-                }
 
+                }
+                nextPotIdx++
+                numberOfSteps--
             }
 
 
