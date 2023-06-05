@@ -95,7 +95,7 @@ export default function GameBoard() {
 
                         </div>
                         <div id="player2-area" className={`${gameContext.currentPlayer === 1 && "active2"}`}>
-                            <span className='player2-tag'>2. Játékos {!singlePlayer && '"AI"'}</span>
+                            <span className='player2-tag'>2. Játékos {singlePlayer && '"AI"'}</span>
                             {
                                 gameBoard.map((pot, idx) =>
                                     idx >= 7 &&
