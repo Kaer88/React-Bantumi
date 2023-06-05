@@ -5,10 +5,11 @@ export const GameContext = createContext({})
 
 export function GameContextProvider({ children }) {
     const [gameContext, setGameContext] = useState({
-        handPosition: 0,
+        handIndex: 0,
         currentPlayer: 0,
         player1SumOfBeans: 0,
-        player2SumOfBeans:0,
+        player2SumOfBeans: 0,
+        gameEnd: true
 
     })
 

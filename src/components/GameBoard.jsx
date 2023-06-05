@@ -10,6 +10,7 @@ export default function GameBoard() {
 
     const { gameContext, setGameContext } = useContext(GameContext)
     const [gameBoard, setGameBoard] = useState([])
+    const [singlePlayer, setSinglePlayer] = useState(true)
 
 
     const handleInitBtn = () => {
@@ -23,6 +24,26 @@ export default function GameBoard() {
         setGameBoard(game.board)
     }, [])
 
+    useEffect(() => {
+        if (gameContext.currentPlayer === 1 && gameContext.gameEnd === false && singlePlayer) {
+            setTimeout(() => {
+                console.log("hemár")
+
+                let choice = Math.floor(Math.random() * (13 - 7) + 7)
+                while (gameBoard[choice].pot === 0) {
+
+                    choice = Math.floor(Math.random() * (13 - 7) + 7)
+                }
+
+                game.pickAPot(choice, gameContext.currentPlayer)
+                const newBoardState = game.getBoardState()
+                const newGameVars = game.getGameVars()
+                setGameBoard(newBoardState)
+                setGameContext(newGameVars)
+            }, 1000)
+        }
+    })
+
     const handleChoice = (idx) => {
         game.pickAPot(idx, gameContext.currentPlayer)
         const newBoardState = game.getBoardState()
@@ -33,39 +54,19 @@ export default function GameBoard() {
     }
     console.log(gameContext)
 
-    useEffect(() => {
-        if (gameContext.currentPlayer === 1 && gameContext.gameEnd === false) {
-            setTimeout(() => {
-                console.log("hemár")
-
-                let choice = Math.floor(Math.random() * (13 - 7) + 7)
-                const player2Pots = gameBoard.slice(7, 13);
-                console.log(choice)
-                console.log(player2Pots)
-
-                while(gameBoard[choice].pot === 0) {
-                    console.log(gameBoard[choice].pot)
-                    choice = Math.floor(Math.random() * (13 - 7) + 7)
-                }
-                
-                game.pickAPot(choice, gameContext.currentPlayer)
-                const newBoardState = game.getBoardState()
-                const newGameVars = game.getGameVars()
-                setGameBoard(newBoardState)
-                setGameContext(newGameVars)
-            }, 1000)
-        }
-    })
-
     return (
         <div>
-            <button className='start-btn' onClick={handleInitBtn}>Start!</button>
+            <div id="game-controls">
+                <button className='start-btn' onClick={handleInitBtn}>Start!</button>
+                <button onClick={() => { setSinglePlayer(!singlePlayer) }} disabled={gameContext.gameEnd ? false : true}>Játékmód váltása</button>
+                <p>{singlePlayer ? "1 játékos mód" : "2 játékos mód"}</p>
+            </div>
             {
 
                 gameBoard.length != 0 &&
                 <>
 
-                    <div id="gameboard" style={{ background: woodBG }}>
+                    <div id="gameboard">
 
                         <div id="player1-area" className={`${gameContext.currentPlayer === 0 && "active2"}`} >
                             <span className='player1-tag'>1. Játékos</span>
@@ -95,7 +96,7 @@ export default function GameBoard() {
                                     (
                                         !Object.keys(pot).includes("scorePot")
                                             ?
-                                            <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} className={`pot ${gameContext.currentPlayer === 1 && "active"}`} />
+                                            <Pot key={`2-${idx}`} beans={pot.pot} onClick={!singlePlayer ? () => handleChoice(idx) : null} className={`pot ${gameContext.currentPlayer === 1 && "active"}`} />
                                             :
                                             <Pot key={`2-${idx}`} beans={pot.pot} className={`big-pot-2 big-pot ${gameContext.currentPlayer === 1 && "active"}`} />
                                     )
@@ -111,7 +112,7 @@ export default function GameBoard() {
             }
 
             {
-                gameContext.gameEnd &&
+                (gameContext.gameEnd && gameContext.player1SumOfBeans != 0) &&
                 <div id="win-message">
                     {game.getWinner() === 0 ? <p>Az első játékos nyert!</p> : <p>A második játékos nyert!</p>}
                     <p>Nyomd meg a Startot egy új játékhoz!</p>

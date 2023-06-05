@@ -68,74 +68,12 @@ export default class Game {
             currentPlayer: 0,
             player1SumOfBeans: 0,
             player2SumOfBeans: 0,
+            gameEnd: true
+
         }
     }
 
     init() {
-
-        // this.board = [
-        //     {
-        //         pot: 0,
-        //         owner: 0
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 0
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 0
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 0
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 0
-        //     },
-        //     {
-        //         pot: 5,
-        //         owner: 0
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 0,
-        //         scorePot: true
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 1
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 1
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 1
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 1
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 1
-        //     },
-        //     {
-        //         pot: 9,
-        //         owner: 1
-        //     },
-        //     {
-        //         pot: 0,
-        //         owner: 1,
-        //         scorePot: true
-        //     },
-
-
-        // ]
-
 
         for (let i = 0; i < this.board.length; i++) {
             if (!Object.keys(this.board[i]).includes("scorePot")) {
