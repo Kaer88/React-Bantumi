@@ -10,7 +10,8 @@ export default function GameBoard() {
 
     const { gameContext, setGameContext } = useContext(GameContext)
     const [gameBoard, setGameBoard] = useState([])
- 
+
+
     const handleInitBtn = () => {
 
         const newGame = game.init()
@@ -30,6 +31,31 @@ export default function GameBoard() {
         setGameContext(newGameVars)
 
     }
+    console.log(gameContext)
+
+    useEffect(() => {
+        if (gameContext.currentPlayer === 1 && gameContext.gameEnd === false) {
+            setTimeout(() => {
+                console.log("hemár")
+
+                let choice = Math.floor(Math.random() * (13 - 7) + 7)
+                const player2Pots = gameBoard.slice(7, 13);
+                console.log(choice)
+                console.log(player2Pots)
+
+                while(gameBoard[choice].pot === 0) {
+                    console.log(gameBoard[choice].pot)
+                    choice = Math.floor(Math.random() * (13 - 7) + 7)
+                }
+                
+                game.pickAPot(choice, gameContext.currentPlayer)
+                const newBoardState = game.getBoardState()
+                const newGameVars = game.getGameVars()
+                setGameBoard(newBoardState)
+                setGameContext(newGameVars)
+            }, 1000)
+        }
+    })
 
     return (
         <div>
@@ -39,10 +65,10 @@ export default function GameBoard() {
                 gameBoard.length != 0 &&
                 <>
 
-                    <div id="gameboard" style={{background: woodBG}}>
+                    <div id="gameboard" style={{ background: woodBG }}>
 
-                        <div id="player1-area" className={`${gameContext.currentPlayer === 0 && "active2"}`} > 
-                        <span className='player1-tag'>1. Játékos</span>
+                        <div id="player1-area" className={`${gameContext.currentPlayer === 0 && "active2"}`} >
+                            <span className='player1-tag'>1. Játékos</span>
 
                             {
 
@@ -71,7 +97,7 @@ export default function GameBoard() {
                                             ?
                                             <Pot key={`2-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} className={`pot ${gameContext.currentPlayer === 1 && "active"}`} />
                                             :
-                                            <Pot key={`2-${idx}`} beans={pot.pot} className={`big-pot-2 big-pot ${gameContext.currentPlayer === 1 && "active"}`}  />
+                                            <Pot key={`2-${idx}`} beans={pot.pot} className={`big-pot-2 big-pot ${gameContext.currentPlayer === 1 && "active"}`} />
                                     )
 
 
@@ -83,12 +109,12 @@ export default function GameBoard() {
                     </div>
                 </>
             }
-            
+
             {
-            gameContext.gameEnd && 
+                gameContext.gameEnd &&
                 <div id="win-message">
-                  {game.getWinner() === 0? <p>Az első játékos nyert!</p> : <p>A második játékos nyert!</p>}
-                  <p>Nyomd meg a Startot egy új játékhoz!</p>
+                    {game.getWinner() === 0 ? <p>Az első játékos nyert!</p> : <p>A második játékos nyert!</p>}
+                    <p>Nyomd meg a Startot egy új játékhoz!</p>
                 </div>
             }
 
