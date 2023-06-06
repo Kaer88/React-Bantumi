@@ -1,5 +1,5 @@
 # React-Bantumi
-
+can i commit? 
 Bantumi ötletelés
 
 Rekurzív funkcióval teszegetni le a babokat
