@@ -8,19 +8,19 @@ export default function Pot({ beans, onClick, className, delay }) {
     useEffect(() => {
         setNrOfBeans(beans)
         if (beans != 0) {
-            
+
             setTimeout(() => {
                 setAnimationState(true);
                 setTimeout(() => {
                     setAnimationState(false)
-                }, delay + 500)
+                }, 300)
             }, delay)
         }
     }, [beans])
 
     return (
         <div className={className} onClick={onClick}>
-            <p>{nrOfBeans}</p>
+            <p>{animationState && nrOfBeans !=0 ? nrOfBeans - 1 : nrOfBeans}</p>
             {animationState && <Hand />}
         </div>
     )
