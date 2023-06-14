@@ -148,16 +148,16 @@ export default class Game {
                     this.board[nextPotIdx].pot++
 
                 }
-                nextPotIdx++
-                numberOfSteps--
-                this.gameVars.animationDelayArray.push(delay)
+                nextPotIdx++;
+                numberOfSteps--;
+                this.gameVars.animationDelayArray.push(delay);
                 delay += 300;
             }
 
             // ha hosszabb az animációtömb, mint a játéktábla, visszaírja a tömb elejére a túlcsúszott adatokat
             
             if (this.gameVars.animationDelayArray.length > 14) {
-                let overflowArray = this.gameVars.animationDelayArray.slice(14, this.gameVars.animationDelayArray.length)
+                const overflowArray = this.gameVars.animationDelayArray.slice(14, this.gameVars.animationDelayArray.length)
 
                 for(let i = 0; i < overflowArray.length; i++) {
                     this.gameVars.animationDelayArray[i] = overflowArray[i]

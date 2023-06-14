@@ -12,8 +12,6 @@ export default function Pot({ beans, onClick, className, delay }) {
                 setAnimationState(true);
                 setTimeout(() => {
                     setAnimationState(false)
-                    
-
                 }, 300)
                 setNrOfBeans(beans)
             }, delay)
