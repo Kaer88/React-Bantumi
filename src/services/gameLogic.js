@@ -68,7 +68,8 @@ export default class Game {
             currentPlayer: 0,
             player1SumOfBeans: 0,
             player2SumOfBeans: 0,
-            gameEnd: true
+            gameEnd: true,
+            animationDelayArray: []
 
         }
     }
@@ -90,7 +91,8 @@ export default class Game {
             currentPlayer: 0,
             player1SumOfBeans: 0,
             player2SumOfBeans: 0,
-            gameEnd: false
+            gameEnd: false,
+            animationDelayArray: []
         }
 
         return (this.board)
@@ -114,7 +116,7 @@ export default class Game {
 
 
     pickAPot(idx, player) {
-
+        this.gameVars.animationDelayArray = [];
         if (this.gameVars.gameEnd) return
         if (this.board[idx].pot === 0) return;
 
@@ -123,6 +125,13 @@ export default class Game {
             let nextPotIdx = idx + 1
             let numberOfSteps = this.board[idx].pot;
             this.board[idx].pot = 0;
+
+
+            //szükséges animáció késleltetés: tömb feltöltése 0-kkal
+            let delay = 0;
+            for (let i = 0; i < idx + 1; i++) {
+                this.gameVars.animationDelayArray.push(0)
+            }
 
             while (numberOfSteps != 0) {
 
@@ -141,7 +150,25 @@ export default class Game {
                 }
                 nextPotIdx++
                 numberOfSteps--
+                this.gameVars.animationDelayArray.push(delay)
+                delay += 300;
             }
+
+            // ha hosszabb az animációtömb, mint a játéktábla, visszaírja a tömb elejére a túlcsúszott adatokat
+            
+            if (this.gameVars.animationDelayArray.length > 14) {
+                let overflowArray = this.gameVars.animationDelayArray.slice(14, this.gameVars.animationDelayArray.length)
+
+                for(let i = 0; i < overflowArray.length; i++) {
+                    this.gameVars.animationDelayArray[i] = overflowArray[i]
+                }
+
+                
+            }
+
+            console.log(this.gameVars.animationDelayArray);
+
+
 
 
             // lépés utáni vizsgálatok, következő játékos megállapítása

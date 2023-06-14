@@ -9,7 +9,8 @@ export function GameContextProvider({ children }) {
         currentPlayer: 0,
         player1SumOfBeans: 0,
         player2SumOfBeans: 0,
-        gameEnd: true
+        gameEnd: true,
+        animationDelayArray: []
 
     })
 

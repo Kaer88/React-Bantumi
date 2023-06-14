@@ -26,8 +26,10 @@ export default function GameBoard() {
 
     useEffect(() => {
         if (gameContext.currentPlayer === 1 && gameContext.gameEnd === false && singlePlayer) {
+            let maxDelay = gameContext.animationDelayArray.pop() > 0 ? gameContext.animationDelayArray.pop() : null;
+            console.log(maxDelay)
             setTimeout(() => {
-                console.log("hemár")
+                
 
                 let choice = Math.floor(Math.random() * (13 - 7) + 7)
                 while (gameBoard[choice].pot === 0) {
@@ -40,7 +42,7 @@ export default function GameBoard() {
                 const newGameVars = game.getGameVars()
                 setGameBoard(newBoardState)
                 setGameContext(newGameVars)
-            }, 1000)
+            }, maxDelay + 1000)
         }
     })
 
@@ -85,9 +87,9 @@ export default function GameBoard() {
                                     (
                                         !Object.keys(pot).includes("scorePot")
                                             ?
-                                            <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} className={`pot ${gameContext.currentPlayer === 0 && "active"}`} />
+                                            <Pot key={`1-${idx}`} beans={pot.pot} onClick={() => handleChoice(idx)} className={`pot ${gameContext.currentPlayer === 0 && "active"}`} delay={gameContext.animationDelayArray[idx] != undefined ? gameContext.animationDelayArray[idx] : null } />
                                             :
-                                            <Pot key={`2-${idx}`} beans={pot.pot} className={`big-pot-1 big-pot ${gameContext.currentPlayer === 0 && "active"}`} />
+                                            <Pot key={`2-${idx}`} beans={pot.pot} className={`big-pot-1 big-pot ${gameContext.currentPlayer === 0 && "active"}`} delay={gameContext.animationDelayArray[idx] != undefined ? gameContext.animationDelayArray[idx] : null } />
                                     )
 
                                 )
@@ -103,9 +105,9 @@ export default function GameBoard() {
                                     (
                                         !Object.keys(pot).includes("scorePot")
                                             ?
-                                            <Pot key={`2-${idx}`} beans={pot.pot} onClick={!singlePlayer ? () => handleChoice(idx) : null} className={`pot ${gameContext.currentPlayer === 1 && "active"}`} />
+                                            <Pot key={`2-${idx}`} beans={pot.pot} onClick={!singlePlayer ? () => handleChoice(idx) : null} className={`pot ${gameContext.currentPlayer === 1 && "active"}`} delay={gameContext.animationDelayArray[idx] != undefined ? gameContext.animationDelayArray[idx] : null }/>
                                             :
-                                            <Pot key={`2-${idx}`} beans={pot.pot} className={`big-pot-2 big-pot ${gameContext.currentPlayer === 1 && "active"}`} />
+                                            <Pot key={`2-${idx}`} beans={pot.pot} className={`big-pot-2 big-pot ${gameContext.currentPlayer === 1 && "active"}`} delay={gameContext.animationDelayArray[idx] != undefined ? gameContext.animationDelayArray[idx] : null }/>
                                     )
 
 

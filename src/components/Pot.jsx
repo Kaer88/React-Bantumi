@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Hand from "./Hand";
 
-export default function Pot({ beans, onClick, className}) {
+export default function Pot({ beans, onClick, className, delay }) {
     const [nrOfBeans, setNrOfBeans] = useState(beans)
     const [animationState, setAnimationState] = useState()
 
     useEffect(() => {
         setNrOfBeans(beans)
-        if(beans != 0) {
-            setAnimationState(true)
+        if (beans != 0) {
+            
             setTimeout(() => {
-                setAnimationState(false)
-            }, 500)
+                setAnimationState(true);
+                setTimeout(() => {
+                    setAnimationState(false)
+                }, delay + 500)
+            }, delay)
         }
     }, [beans])
 
