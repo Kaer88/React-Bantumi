@@ -128,7 +128,7 @@ export default class Game {
 
 
             //szükséges animáció késleltetés: tömb feltöltése 0-kkal
-            let delay = 0;
+            let delay = 300;
             for (let i = 0; i < idx + 1; i++) {
                 this.gameVars.animationDelayArray.push(0)
             }
